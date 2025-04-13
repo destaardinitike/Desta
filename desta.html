@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Kecepatan Lari</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; background-color: #f0f8ff; }
+        .container { max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; }
+        input[type="number"], button { width: 100%; padding: 10px; margin: 10px 0; }
+        button { background-color: #4CAF50; color: white; border: none; }
+        button:hover { background-color: #45a049; }
+        .result { text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Kecepatan Lari</h1>
+        <form method="post">
+            <label>Jarak (kilometer):</label>
+            <input type="number" name="jarak" step="0.01" required>
+
+            <label>Waktu (menit):</label>
+            <input type="number" name="waktu" step="0.01" required>
+
+            <button type="submit">Hitung Kecepatan</button>
+        </form>
+
+        {% if kecepatan is not none %}
+            <div class="result">
+                {% if kecepatan == "Input tidak valid." %}
+                    <p style="color:red;">{{ kecepatan }}</p>
+                {% else %}
+                    <p>Kecepatan Anda: <strong>{{ kecepatan|round(2) }} km/jam</strong></p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
